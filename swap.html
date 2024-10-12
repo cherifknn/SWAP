@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         :root {
             --dark-blue: #1E2A3D;
             --medium-blue: #7B8AA1;
@@ -17,11 +18,13 @@
             --text-color: #333;
             --bg-color: var(--light-gray);
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -29,11 +32,13 @@
             background-color: var(--bg-color);
             overflow-x: hidden;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
+
         header {
             position: fixed;
             width: 100%;
@@ -44,62 +49,40 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
         }
+
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--light-red);
         }
+
         nav ul {
             display: flex;
             list-style: none;
         }
+
         nav ul li {
             margin-left: 2rem;
         }
+
         nav ul li a {
             color: var(--dark-blue);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
+
         nav ul li a:hover {
             color: var(--light-red);
         }
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-            nav ul {
-                flex-direction: column;
-                display: none;
-                position: absolute;
-                background-color: white;
-                width: 100%;
-                top: 60px;
-                left: 0;
-                padding: 1rem 0;
-            }
-            nav ul li {
-                width: 100%;
-                text-align: center;
-            }
-            nav ul li a {
-                display: block;
-                padding: 10px;
-                width: 100%;
-            }
-        }
+
         .hero {
             height: 100vh;
             display: flex;
@@ -108,6 +91,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -118,27 +102,31 @@
             opacity: 0.1;
             animation: rotate 60s linear infinite;
         }
+
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
         .hero-content {
             position: relative;
             z-index: 1;
             color: #fff;
             text-align: center;
-            padding: 2rem;
         }
+
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
+
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto 2rem;
         }
+
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -149,71 +137,84 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
+
         .cta-button:hover {
             background-color: var(--dark-red);
             box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
+
         section {
-            padding: 8rem 0;
+            padding: 6rem 0;
         }
+
         .section-title {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
             color: var(--dark-blue);
         }
+
         .card-container {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
         }
+
         .card {
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 2.5rem;
+            padding: 2rem;
             margin-bottom: 2rem;
-            width: calc(33.333% - 1.5rem);
+            width: calc(33.333% - 1rem);
             transition: all 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
+
         .card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--dark-blue);
         }
+
         .product-showcase {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-top: 4rem;
-            gap: 4rem;
         }
+
         .product-image {
-            width: 48%;
+            width: 50%;
             position: relative;
         }
+
         .product-image img {
             width: 100%;
             border-radius: 10px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
+
         .product-details {
-            width: 48%;
+            width: 45%;
         }
+
         .product-details h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--dark-blue);
         }
+
         #newsletter-form {
             display: flex;
             max-width: 500px;
-            margin: 3rem auto;
+            margin: 2rem auto;
         }
+
         #newsletter-form input[type="email"] {
             flex-grow: 1;
             padding: 1rem;
@@ -221,6 +222,7 @@
             border: none;
             border-radius: 50px 0 0 50px;
         }
+
         #newsletter-form .cta {
             padding: 1rem 2rem;
             font-size: 1rem;
@@ -231,32 +233,33 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         #newsletter-form .cta:hover {
             background-color: var(--dark-red);
         }
+
         footer {
             background-color: var(--dark-blue);
             color: #fff;
             text-align: center;
-            padding: 3rem 0;
+            padding: 2rem 0;
         }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-            section {
-                padding: 6rem 0;
-            }
             .card {
                 width: 100%;
-                margin-bottom: 1.5rem;
             }
+
             .product-showcase {
                 flex-direction: column;
-                gap: 2rem;
             }
+
             .product-image, .product-details {
                 width: 100%;
+            }
+
+            .product-image {
+                margin-bottom: 2rem;
             }
         }
     </style>
@@ -265,7 +268,6 @@
     <header>
         <div class="container header-content">
             <div class="logo">SWAP Energy</div>
-            <div class="hamburger">&#9776;</div> <!-- Hamburger Menu Icon -->
             <nav>
                 <ul>
                     <li><a href="#mission">Mission</a></li>
@@ -276,7 +278,67 @@
         </div>
     </header>
 
-    <!-- Remaining HTML content as you provided -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Ride the future,<br>Drive the change.</h1>
+            <p>Our mission is to drive the transition toward green energy by introducing an advanced battery-swapping network for electric motorcycles.</p>
+            <a href="#partner" class="cta-button">Join the Revolution</a>
+        </div>
+    </section>
+
+    <section id="mission">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Sustainability</h3>
+                    <p>Bring a groundbreaking solution to the UAE's logistics and delivery sector! 📦🔋</p>
+                </div>
+                <div class="card">
+                    <h3>Innovation</h3>
+                    <p>Introduce advanced battery-swapping networks for electric motorcycles. 🛵⚡️</p>
+                </div>
+                <div class="card">
+                    <h3>Efficiency</h3>
+                    <p>Help businesses reduce operational costs while cutting emissions. 📈🌿</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-showcase">
+                <div class="product-image">
+                    <img src="/api/placeholder/600/400" alt="SWAP Battery Station">
+                </div>
+                <div class="product-details">
+                    <h3>SWAP Battery Stations</h3>
+                    <p>Our innovative battery-swapping stations allow delivery fleets to stay on the move without the downtime of charging. This offers a faster, cost-effective, and eco-friendly solution for the growing logistics industry.</p>
+                    <p><strong>Launching in Q1 2025!</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partner">
+        <div class="container">
+            <h2 class="section-title">Partner With Us</h2>
+            <p>Join us in shaping the future of sustainable logistics.<br>Stay updated on our launch and partnership opportunities.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="cta">Stay Informed</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SWAP Energy Motors LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -296,7 +358,7 @@
         gsap.from(".hero p", { opacity: 0, y: 50, duration: 1, delay: 0.8 });
         gsap.from(".cta-button", { opacity: 0, y: 50, duration: 1, delay: 1.1 });
 
-        // Scroll animations for cards
+        // Scroll animations
         gsap.utils.toArray('.card').forEach((card, i) => {
             gsap.from(card, {
                 scrollTrigger: {
@@ -330,7 +392,7 @@
             duration: 1
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -338,12 +400,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-
-        // Hamburger menu toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            const navUL = document.querySelector('nav ul');
-            navUL.style.display = navUL.style.display === 'block' ? 'none' : 'block';
         });
 
         // Newsletter form submission
