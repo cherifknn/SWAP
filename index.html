@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How Much Of A Clown Am I?</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Reset & Basic Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fefcea, #f1daff);
+      color: #333;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /**********************
+     * HEADER & TITLE
+     **********************/
+    header {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Repeating clown emojis in the background for extra absurdity */
+    header::before {
+      content: "🤡 🤡 🤡 🤡 🤡 🤡 🤡 🤡";
+      position: absolute;
+      top: -20px;
+      left: -200px;
+      font-size: 3rem;
+      opacity: 0.2;
+      animation: infinite-scroll 10s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes infinite-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(400px);
+      }
+    }
+    header h1 {
+      font-size: 2.75rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      animation: pop 1.5s ease-in-out;
+      font-family: 'Comic Neue', cursive;
+    }
+    @keyframes pop {
+      0%   { transform: scale(0.9); opacity: 0; }
+      60%  { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    header p {
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      max-width: 600px;
+      margin: 0.5rem auto 0;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    /**********************
+     * MAIN CONTENT WRAPPER
+     **********************/
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /**********************
+     * FORM SECTION
+     **********************/
+    .form-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-card h2 {
+      font-size: 1.75rem;
+      color: #ff6f61;
+      margin-bottom: 1rem;
+      font-family: 'Comic Neue', cursive;
+    }
+    .choice-group {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .choice-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #444;
+      font-weight: 600;
+    }
+    .choice-group input[type="radio"] {
+      transform: scale(1.2);
+      accent-color: #ff6f61;
+      cursor: pointer;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .input-group label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #444;
+    }
+    .input-group input[type="file"],
+    .input-group textarea {
+      font: inherit;
+      padding: 0.75rem;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+    .input-group input[type="file"]:focus,
+    .input-group textarea:focus {
+      border-color: #ff6f61;
+      outline: none;
+    }
+    .input-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    .input-group.hidden {
+      display: none;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    button {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-rate {
+      background-color: #ff6f61;
+      color: #fff;
+    }
+    .btn-rate:hover {
+      background-color: #ff3b2e;
+    }
+    .btn-pdf {
+      background-color: #4caf50;
+      color: #fff;
+    }
+    .btn-pdf:hover {
+      background-color: #43a047;
+    }
+    .btn-share {
+      background-color: #2196f3;
+      color: #fff;
+    }
+    .btn-share:hover {
+      background-color: #1976d2;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .result {
+      margin-top: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ff6f61;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Screenshot Preview */
+    .screenshot-preview {
+      margin-top: 1rem;
+      display: none;
+      text-align: center;
+    }
+    .screenshot-preview img {
+      max-width: 200px;
+      border-radius: 8px;
+      border: 2px dashed #ff6f61;
+      padding: 4px;
+    }
+
+    /**********************
+     * LEADERBOARD
+     **********************/
+    .leaderboard {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .leaderboard h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #ff6f61;
+      font-family: 'Comic Neue', cursive;
+    }
+    .clown-of-week {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fafafa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border: 2px dashed #ff6f61;
+      animation: wiggle 1.2s infinite;
+    }
+    /* Make the "Clown of the Week" wiggle slightly */
+    @keyframes wiggle {
+      0%   { transform: rotate(-2deg); }
+      50%  { transform: rotate(2deg); }
+      100% { transform: rotate(-2deg); }
+    }
+    .clown-of-week img {
+      max-width: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .clown-of-week p {
+      font-size: 1rem;
+      margin: 0.2rem 0;
+    }
+    .clown-name {
+      font-weight: 700;
+      color: #ff3b2e;
+    }
+    .no-clown {
+      text-align: center;
+      color: #777;
+      font-style: italic;
+    }
+
+    /**********************
+     * NEW: CLOWN FACTS
+     * Using an accordion approach
+     **********************/
+    .clown-facts {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      margin-top: 2rem;
+    }
+    .clown-facts h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #ff6f61;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .accordion-card {
+      border: 2px dashed #ff6f61;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: #fafafa;
+      transition: box-shadow 0.3s;
+    }
+    .accordion-card:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    }
+    .accordion-header {
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .accordion-header h3 {
+      font-size: 1.2rem;
+      margin: 0;
+      font-family: 'Comic Neue', cursive;
+      color: #ff6f61;
+    }
+    .accordion-header svg {
+      fill: #ff6f61;
+      transition: transform 0.3s;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 1rem;
+    }
+    .accordion-content p {
+      margin: 1rem 0;
+      color: #555;
+      line-height: 1.5;
+    }
+    .accordion-content.expanded {
+      padding: 1rem;
+      border-top: 1px solid #ff6f61;
+    }
+    .accordion-content.expanded p:last-child {
+      margin-bottom: 0;
+    }
+    .accordion-card.active .accordion-content {
+      max-height: 300px; /* Adjust if needed for longer text */
+    }
+    .accordion-card.active .accordion-header svg {
+      transform: rotate(180deg);
+    }
+
+    /**********************
+     * FOOTER
+     **********************/
+    footer {
+      text-align: center;
+      background: #fdfdfd;
+      padding: 1.5rem;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+    footer a {
+      color: #ff6f61;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      .form-card h2,
+      .leaderboard h2,
+      .clown-facts h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How Much Of A Clown Am I? 🤡</h1>
+    <p>Are you just a clown, or the entire circus? Time to find out, bestie.</p>
+  </header>
+
+  <main>
+    <!-- FORM SECTION -->
+    <section class="form-card">
+      <h2>Enter the Clown Arena</h2>
+      <p style="margin-bottom:1rem; color:#555;">
+        Please select how you'd like to spill the tea. You can either upload a screenshot of your cringe convo, 
+        <em>or</em> paste the drama as text.
+      </p>
+      <!-- Choice: Screenshot or Text -->
+      <div class="choice-group">
+        <label>
+          <input type="radio" name="entryMethod" value="screenshot" checked />
+          <span>I have a screenshot</span>
+        </label>
+        <label>
+          <input type="radio" name="entryMethod" value="text" />
+          <span>I want to paste text</span>
+        </label>
+      </div>
+
+      <!-- Screenshot Input -->
+      <div class="input-group" id="screenshotGroup">
+        <label for="screenshotInput">Upload a Screenshot (Receipts or it didn’t happen):</label>
+        <input type="file" id="screenshotInput" accept="image/*" />
+        <div class="screenshot-preview" id="screenshotPreview">
+          <img id="previewImage" src="" alt="Screenshot Preview" />
+        </div>
+      </div>
+
+      <!-- Text Input -->
+      <div class="input-group hidden" id="textGroup">
+        <label for="textInput">Your Situationship Texts (Cringe + Drama welcome):</label>
+        <textarea id="textInput" placeholder="Paste your cringe messages here..."></textarea>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn-rate" id="rateButton">Get My Clown Score</button>
+        <button class="btn-pdf" id="pdfButton" disabled>Clown Certification</button>
+        <button class="btn-share" id="shareButton" disabled>Share It</button>
+      </div>
+      <div class="result" id="resultText"></div>
+    </section>
+
+    <!-- LEADERBOARD SECTION -->
+    <section class="leaderboard">
+      <h2>Clown of the Week</h2>
+      <div id="clownOfWeek" class="clown-of-week" style="display: none;">
+        <img id="clownOfWeekImg" src="" alt="Clown of the Week" />
+        <div>
+          <p class="clown-name" id="clownOfWeekName"></p>
+          <p id="clownOfWeekScore"></p>
+        </div>
+      </div>
+      <div id="noClownMsg" class="no-clown">No clowns crowned yet. Be the first!</div>
+    </section>
+
+    <!-- NEW: CLOWN FACTS SECTION w/ Accordion -->
+    <section class="clown-facts">
+      <h2>Clown Facts & Real Talk</h2>
+      <div class="accordion">
+        <!-- Fact #1 -->
+        <div class="accordion-card">
+          <div class="accordion-header">
+            <h3>How much you could be making as a Clown</h3>
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M12 7l5 5H7z"></path>
+            </svg>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Believe it or not, clowns can actually get the bag. Depending on where 
+              you live, you might make around 
+              <strong>$30,000 to $50,000 a year</strong> (or more) if you’re willing
+              to parade in giant shoes and tie balloon animals for hours on end.
+            </p>
+            <p>
+              Just remember: the bigger the shoes, the bigger the paycheck, right?
+              (Probably not, but let's pretend.)
+            </p>
+          </div>
+        </div>
+
+        <!-- Fact #2 -->
+        <div class="accordion-card">
+          <div class="accordion-header">
+            <h3>Are clowns actually loved by anyone?</h3>
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M12 7l5 5H7z"></path>
+            </svg>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Listen, some people fear them (thanks to scary movies), but there's 
+              always that one kid at the party who thinks you're the coolest human 
+              alive. Also, certain niche communities *really* appreciate a good 
+              clown routine. It’s all about finding your clown audience, fam!
+            </p>
+            <p>
+              Ultimately, love is subjective—and so is the size of your red nose.
+            </p>
+          </div>
+        </div>
+
+        <!-- Fact #3 -->
+        <div class="accordion-card">
+          <div class="accordion-header">
+            <h3>Can a clown ever heal from this illness?</h3>
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M12 7l5 5H7z"></path>
+            </svg>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Short answer: we sure hope so. Long answer: therapy exists for a reason,
+              bestie. Sometimes you gotta pack up the honk-honk horn, take a break, 
+              and reflect on your life choices—like sending that “u up?” text at 3 AM.
+            </p>
+            <p>
+              Remember: it’s never too late to hang up the big shoes and find inner 
+              peace. Or just double down and embrace the clown vibes for eternity. 
+              You do you!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Clowns, unite! Spread the nonsense responsibly.</p>
+    <p>Tweet about your clown badge: <a href="https://twitter.com/hashtag/ClownVibes" target="_blank">#ClownVibes</a></p>
+  </footer>
+
+  <!-- JS Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    /***************
+     * DOM ELEMENTS
+     ***************/
+    const entryMethodRadios = document.querySelectorAll('input[name="entryMethod"]');
+    const screenshotGroup    = document.getElementById('screenshotGroup');
+    const textGroup          = document.getElementById('textGroup');
+    const screenshotInput    = document.getElementById('screenshotInput');
+    const previewImage       = document.getElementById('previewImage');
+    const screenshotPreview  = document.getElementById('screenshotPreview');
+    const textInput          = document.getElementById('textInput');
+    const rateButton         = document.getElementById('rateButton');
+    const pdfButton          = document.getElementById('pdfButton');
+    const shareButton        = document.getElementById('shareButton');
+    const resultText         = document.getElementById('resultText');
+
+    const clownOfWeek        = document.getElementById('clownOfWeek');
+    const clownOfWeekImg     = document.getElementById('clownOfWeekImg');
+    const clownOfWeekName    = document.getElementById('clownOfWeekName');
+    const clownOfWeekScore   = document.getElementById('clownOfWeekScore');
+    const noClownMsg         = document.getElementById('noClownMsg');
+
+    // Accordion
+    const accordionCards = document.querySelectorAll('.accordion-card');
+
+    /***************
+     * STATE
+     ***************/
+    let currentRating     = null;
+    let topClown = {
+      name: null,
+      rating: -1,
+      screenshot: null
+    };
+
+    /***************
+     * LISTENERS
+     ***************/
+    // Toggle inputs based on radio selection
+    entryMethodRadios.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.value === 'screenshot') {
+          screenshotGroup.classList.remove('hidden');
+          textGroup.classList.add('hidden');
+        } else {
+          screenshotGroup.classList.add('hidden');
+          textGroup.classList.remove('hidden');
+        }
+      });
+    });
+
+    // Handle screenshot input to preview image
+    screenshotInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        previewImage.src = event.target.result;
+        screenshotPreview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Rate Button (Simulate "AI" rating)
+    rateButton.addEventListener('click', () => {
+      // Determine which method is chosen
+      const chosenMethod = document.querySelector('input[name="entryMethod"]:checked').value;
+      let validInput = false;
+      let userIdentifier = "Anon";
+
+      if (chosenMethod === 'screenshot') {
+        // We consider screenshot valid if there's a file loaded
+        validInput = previewImage.src && previewImage.src.length > 0;
+      } else {
+        // We consider text valid if there's text
+        validInput = textInput.value.trim().length > 0;
+      }
+
+      if (!validInput) {
+        resultText.textContent = "We need some drama, bestie! Provide a screenshot or text first.";
+        return;
+      }
+
+      // Generate random rating: 0 to 100
+      currentRating = Math.floor(Math.random() * 101);
+      resultText.textContent = `OMG, you're ${currentRating}% clown! 🤡`;
+
+      // Enable PDF + share buttons
+      pdfButton.disabled = false;
+      shareButton.disabled = false;
+
+      // Update "Clown of the Week" if this rating is higher
+      if (currentRating > topClown.rating) {
+        topClown.name = "Legendary Clown";
+        topClown.rating = currentRating;
+        topClown.screenshot = chosenMethod === 'screenshot' ? previewImage.src : null;
+
+        updateClownOfWeek();
+      }
+    });
+
+    // PDF Export
+    pdfButton.addEventListener('click', () => {
+      if (currentRating === null) return;
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      // Title
+      doc.setFontSize(22);
+      doc.text("Clown Certification", 105, 30, null, null, "center");
+
+      // Content
+      doc.setFontSize(16);
+      doc.text("This certifies that you are officially a clown,", 105, 50, null, null, "center");
+      doc.text(`with a rating of ${currentRating}%.`, 105, 60, null, null, "center");
+
+      // Funny disclaimer
+      doc.setFontSize(12);
+      doc.text(
+        "PSA: If your next text is even cringier, your clown rating may increase. 🤡",
+        105, 80, null, null, "center"
+      );
+
+      // Save
+      doc.save("Clown_Certification.pdf");
+    });
+
+    // Social Share (navigator.share fallback)
+    shareButton.addEventListener('click', async () => {
+      if (currentRating === null) return;
+
+      const shareData = {
+        title: 'My Clown Score!',
+        text: `I just found out I'm ${currentRating}% clown. Are you bigger clown than me? 🤡`,
+        url: window.location.href
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          // fallback: copy to clipboard
+          await navigator.clipboard.writeText(
+            `${shareData.title}\n${shareData.text}\n${shareData.url}`
+          );
+          alert('Share info copied to clipboard. Paste it anywhere and brag about your clown level!');
+        }
+      } catch (err) {
+        console.error('Error sharing', err);
+      }
+    });
+
+    // Accordion Click Handler
+    accordionCards.forEach((card) => {
+      const header = card.querySelector('.accordion-header');
+      const content = card.querySelector('.accordion-content');
+      header.addEventListener('click', () => {
+        card.classList.toggle('active');
+        content.classList.toggle('expanded');
+      });
+    });
+
+    /***************
+     * HELPER FUNCTIONS
+     ***************/
+    function updateClownOfWeek() {
+      // If we have a top clown, display them
+      if (topClown.rating >= 0) {
+        noClownMsg.style.display = 'none';
+        clownOfWeek.style.display = 'flex';
+
+        // We used a placeholder name "Legendary Clown"
+        clownOfWeekName.textContent = topClown.name;
+        clownOfWeekScore.textContent = `Rating: ${topClown.rating}%`;
+
+        if (topClown.screenshot) {
+          clownOfWeekImg.src = topClown.screenshot;
+        } else {
+          // fallback clown image if none uploaded
+          clownOfWeekImg.src = "data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDQiIGhlaWdodD0iMTA0IiB2aWV3Qm94PSIwIDAgMTA0IDEwNCI+PHBhdGggZD0iTTc3Ljg3IDE2LjQzYy0xMi4zNS00LjU3LTI2LjM2LS4zOC0zNC41MSA5Ljg3SDM4LjYyYy04LjE1LTEwLjI1LTIyLjE1LTE0LjQ0LTM0LjUxLTkuODctOC43NyAzLjEyLTE1LjcxIDkuMDMtMTkuMTQgMTYuOTMtNC44IDI0LjA1IDkuODcgNTAuMTUgMzQuNTEgNTMuODUgNC44IDEuMTIgOC41IDQuMTUgMTAuNjMgOC4zOCAyLjEyIDQuMjEgMi4zNSA4Ljk3IDEuMzcgMTMuNS0uNzIgNC41NS0zLjI0IDguNzktNi44NCAxMiA1LjI4IDIuNDEgMTEuMzUgMi4zNiAxNi41MS0uMjYuNDUtMTEuNDktOC4xOC0yMi4xMy0yMC4zOS0yNC4xNSIvPjwvc3ZnPg==";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
